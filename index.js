@@ -21,3 +21,33 @@ const zebraStripes = [
   { width: 0.59, color: null },
   { width: 7.31, color: null }
 ];
+
+var sortedRobots = robots.map(function (bot) {
+  if (knownDecepticons.includes(bot.name)){
+  return Object.assign({}, bot, {
+    name: bot.name,
+    alliance: 'decepticon'
+  })}
+  else {
+    return Object.assign({}, bot, {
+    name: bot.name,
+    alliance: 'autobot'
+  })};
+});
+
+var coloredZebraStripes = zebraStripes.map(function(stripe,index, zebraStripes){
+  if (index % 2 == 0){
+    return Object.assign({},stripe,{
+      color : "black",
+      width : stripe.width
+    })
+
+  }
+  else {
+    return Object.assign({},stripe,{
+      color : "white",
+      width : stripe.width
+    })
+
+  }
+})
